@@ -1,7 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class KalkulatorTests {
+public class KalkulatorTest {
 
     @BeforeClass
     public void beforeClass() {
