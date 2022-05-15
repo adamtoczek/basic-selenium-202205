@@ -17,6 +17,7 @@ public class FormTest extends TestBase{
         WebElement fname = driver.findElement(By.id("inputFirstName3"));
         fname.sendKeys("Adam");
 
+
         List<WebElement> radioSex = driver.findElements(By.name("gridRadiosSex"));
         logger.info("Imie wypelnione");
         for(WebElement element : radioSex) {
@@ -47,9 +48,9 @@ public class FormTest extends TestBase{
         driver.findElement(By.id("additionalInformations")).sendKeys("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
 
         //submit
-        driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
+//        driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
 //        driver.findElement(By.tagName("form")).submit();
-//        driver.findElement(By.id("inputFirstName3")).submit();
+        fname.submit();
 
         //asercje
         WebElement message = driver.findElement(By.id("validator-message"));
