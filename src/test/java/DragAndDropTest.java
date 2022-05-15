@@ -33,9 +33,10 @@ public class DragAndDropTest extends TestBase{
     }
     @Test void moveByOffset(){
         action.clickAndHold(draggable)
-                .moveByOffset(dropZone.getLocation().x - draggable.getLocation().x + 5, 10)
+                .moveByOffset(dropZone.getLocation().x - draggable.getLocation().x + 5, 0)
                 .release().perform();
         Assert.assertEquals(dropZone.getText(), "Dropped!");
+
     }
 
 }
