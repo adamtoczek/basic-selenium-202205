@@ -9,7 +9,7 @@ public class TableTest extends TestBase{
     private String url="https://seleniumui.moderntester.pl/table.php";
 
     @Test
-    public void getAllPeaksAbove4000() {
+    public void shouldBe9rowsAbove4000() {
         driver.get(url);
         List<WebElement> rows = driver.findElements(By.cssSelector("tbody tr"));
         int count = 0;
@@ -26,6 +26,5 @@ public class TableTest extends TestBase{
             }
         }
         Assert.assertEquals(count, 9);
-
     }
 }
