@@ -13,6 +13,7 @@ import java.time.Duration;
 public class TestBase {
     WebDriver driver;
     Logger logger = LoggerFactory.getLogger(this.getClass());
+    public final int IMPLICIT_WAIT_TIME_SECONDS = 5;
 
     @BeforeClass
     public void setupDriverManager() {
@@ -25,7 +26,7 @@ public class TestBase {
         options.addArguments("start-maximized");
 
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT_TIME_SECONDS));
     }
 
     @AfterMethod
