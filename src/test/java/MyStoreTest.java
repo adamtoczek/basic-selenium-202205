@@ -72,9 +72,11 @@ public class MyStoreTest extends TestBase{
         qty.sendKeys(Keys.ENTER);
 
 
+
         WebElement closeBtn = driver.findElement(By.cssSelector("#blockcart-modal button.close"));
         wait.until(ExpectedConditions.elementToBeClickable(closeBtn));
         closeBtn.click();
+
 
         List<WebElement> topNavItems = driver.findElements(By.cssSelector("#top-menu li"));
         for (WebElement item : topNavItems)
@@ -85,6 +87,7 @@ public class MyStoreTest extends TestBase{
 
         List<WebElement> productList2 = driver.findElements(By.className("product"));
         productList2.get(0).click();
+
         itemPrice.add(Float.parseFloat(driver.findElement(By.cssSelector(".current-price>span[content]")).getAttribute("content")));
         itemQty.add(1);
         driver.findElement(By.cssSelector("button.add-to-cart")).click();
