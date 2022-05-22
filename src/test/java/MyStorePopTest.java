@@ -1,5 +1,6 @@
 import mystore.BasePage;
 
+import mystore.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,36 +18,36 @@ public class MyStorePopTest extends TestBase{
 
         BasePage myStore = new BasePage();
 
-        myStore.homePage.navigateTo();
-        myStore.homePage.searchFor("poster");
+        BasePage.homePage.navigateTo();
+        BasePage.homePage.searchFor("poster");
 
-        Assert.assertEquals(myStore.searchResultPage.getResultsNumber(), 3);
+        Assert.assertEquals(BasePage.searchResultPage.getResultsNumber(), 3);
 
-        myStore.searchResultPage.clickQuickViewOnProduct("TODAY POSTER");
+        BasePage.searchResultPage.clickQuickViewOnProduct("TODAY POSTER");
 
-        myStore.productQuickView.changeProductVariant("Dimension", "80x120cm");
-        itemPrice.add(myStore.productQuickView.getItemPrice());
-        myStore.productQuickView.changeQuantity(2);
+        BasePage.productQuickView.changeProductVariant("Dimension", "80x120cm");
+        itemPrice.add(BasePage.productQuickView.getItemPrice());
+        BasePage.productQuickView.changeQuantity(2);
         itemQty.add(2);
-        myStore.productQuickView.addToCart();
-        myStore.cartPreview.close();
+        BasePage.productQuickView.addToCart();
+        BasePage.cartPreview.close();
 
-        myStore.navigate.openClothes();
-        myStore.categoryPage.clickProductTile(1);
-        itemPrice.add(myStore.productPage.getItemPrice());
+        BasePage.navigate.openClothes();
+        BasePage.categoryPage.clickProductTile(1);
+        itemPrice.add(BasePage.productPage.getItemPrice());
         itemQty.add(17);
-        myStore.productPage.changeProductVariant("Size", "M").changeProductVariant("Color", "Black").changeQuantity(17).addToCart();
-        myStore.cartPreview.clickProceedToCheckout();
+        BasePage.productPage.changeProductVariant("Size", "M").changeProductVariant("Color", "Black").changeQuantity(17).addToCart();
+        BasePage.cartPreview.clickProceedToCheckout();
 
         //asercje na cartPage
         for (int i=0; i < itemPrice.size(); i++) {
             String expectedPrice = formatPrice(itemPrice.get(i)*itemQty.get(i));
-            Assert.assertEquals(myStore.cartPage.getCartItem(i).getTotalPrice(), expectedPrice);
-            Assert.assertEquals(myStore.cartPage.getCartItem(i).getQty(), itemQty.get(i));
+            Assert.assertEquals(BasePage.cartPage.getCartItem(i).getTotalPrice(), expectedPrice);
+            Assert.assertEquals(BasePage.cartPage.getCartItem(i).getQty(), itemQty.get(i));
         }
 
-        Assert.assertEquals(myStore.cartPage.getCartSubtotal(), formatPrice(getTestSubtotal(itemPrice, itemQty)));
-        Assert.assertEquals(myStore.cartPage.getCartTotal(), formatPrice(getTestSubtotal(itemPrice, itemQty)+7));
+        Assert.assertEquals(BasePage.cartPage.getCartSubtotal(), formatPrice(getTestSubtotal(itemPrice, itemQty)));
+        Assert.assertEquals(BasePage.cartPage.getCartTotal(), formatPrice(getTestSubtotal(itemPrice, itemQty)+7));
 
     }
 
