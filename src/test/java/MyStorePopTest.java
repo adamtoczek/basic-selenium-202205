@@ -34,10 +34,8 @@ public class MyStorePopTest extends TestBase{
         myStore.navigate.openClothes();
         myStore.categoryPage.clickProductTile(1);
         itemPrice.add(myStore.productPage.getItemPrice());
-        itemQty.add(1);
-        myStore.productPage.changeProductVariant("Size", "M");
-        myStore.productPage.changeProductVariant("Color", "Black");
-        myStore.productPage.addToCart();
+        itemQty.add(17);
+        myStore.productPage.changeProductVariant("Size", "M").changeProductVariant("Color", "Black").changeQuantity(17).addToCart();
         myStore.cartPreview.clickProceedToCheckout();
 
         //asercje na cartPage

@@ -23,21 +23,23 @@ public abstract class ProductCommon extends BasePage{
         return Float.parseFloat(driver.findElement(By.cssSelector(getCSSForModal(itemPriceCSS))).getAttribute("content"));
     }
 
-    public void changeQuantity(int i) {
+    public ProductCommon changeQuantity(int i) {
         WebElement qty = driver.findElement(By.cssSelector(getCSSForModal(qtyCSS)));
         qty.clear();
         qty.sendKeys(""+i);
+        return this;
     }
 
-    public void addToCart() {
+    public ProductCommon addToCart() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement addButton = driver.findElement(By.cssSelector(getCSSForModal(addToCartButtonCss)));
         wait.until(ExpectedConditions.elementToBeClickable(addButton));
         addButton.click();
         cartPreview = new CartPreview();
+        return this;
     }
 
-    public void changeProductVariant(String label, String visibleText) {
+    public ProductCommon changeProductVariant(String label, String visibleText) {
         List<WebElement> variants = driver.findElements(By.cssSelector("div.product-variants-item"));
         for (WebElement variant : variants) {
             String title = variant.findElement(By.cssSelector("span.control-label")).getText();
@@ -58,6 +60,7 @@ public abstract class ProductCommon extends BasePage{
                 break;
             }
         }
+        return this;
     }
 
     private void changeProductVariantRadios(WebElement element, String visibleText) {
