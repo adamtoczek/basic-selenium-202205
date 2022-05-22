@@ -24,7 +24,7 @@ public class MyStorePopTest extends TestBase{
 
         myStore.searchResultPage.clickQuickViewOnProduct("TODAY POSTER");
 
-        myStore.productQuickView.changeProductVariant("80x120cm");
+        myStore.productQuickView.changeProductVariant("Dimension", "80x120cm");
         itemPrice.add(myStore.productQuickView.getItemPrice());
         myStore.productQuickView.changeQuantity(2);
         itemQty.add(2);
@@ -35,7 +35,9 @@ public class MyStorePopTest extends TestBase{
         myStore.categoryPage.clickProductTile(1);
         itemPrice.add(myStore.productPage.getItemPrice());
         itemQty.add(1);
-        myStore.productPage.addToBasket();
+        myStore.productPage.changeProductVariant("Size", "M");
+        myStore.productPage.changeProductVariant("Color", "Black");
+        myStore.productPage.addToCart();
         myStore.cartPreview.clickProceedToCheckout();
 
         //asercje na cartPage
@@ -57,7 +59,7 @@ public class MyStorePopTest extends TestBase{
         return itemsSubtotal;
     }
 
-    public String formatPrice(Float price) {
+    private String formatPrice(Float price) {
         Locale currentLocale = Locale.getDefault();
         DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(currentLocale);
         otherSymbols.setDecimalSeparator('.');

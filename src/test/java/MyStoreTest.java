@@ -24,8 +24,10 @@ public class MyStoreTest extends TestBase{
         WebElement searchField = driver.findElement(By.name("s"));
         searchField.sendKeys("poster");
         searchField.submit();
+
         List<Float> itemPrice = new ArrayList<>();
         List<Integer> itemQty = new ArrayList<>();
+
         List<WebElement> productList = driver.findElements(By.className("product"));
         Assert.assertEquals(productList.size(), 3);
 
